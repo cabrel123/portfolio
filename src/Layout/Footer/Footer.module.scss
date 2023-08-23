@@ -1,0 +1,27 @@
+.myfooter {
+    background: #14042b;
+    color: #dce1eb;
+    max-width: 100%;
+    padding: 20px 50px;
+    position: relative;
+    right: 0;
+    left: 0;
+    bottom:0;
+}
+.footerinfo {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.copywrite {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: Roboto,sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px 0 0;
+    width: 100%;
+}
