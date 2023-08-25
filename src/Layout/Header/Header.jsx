@@ -10,11 +10,34 @@ import { Link } from 'react-router-dom'
 import logo from '/images/developers.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Header()
 {
     const [isNavExpanded, setIsNavExpanded] = useState(false)
+    const [isSticky, setIsSticky] = useState(false);
+
+    //Sticky menu
+  const handleMenuScroll = () => {
+    if (window.scrollY > 100) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleMenuScroll);
+    return () => {
+      window.removeEventListener('scroll', handleMenuScroll);
+    };
+  }, []);
+
+  //Anchor link
+    const handleScroll = id => {
+      const element = document.getElementById(id);
+      element.scrollIntoView({ behavior: 'smooth' });
+    };
 
     const LogoImage = styled.img`
     vertical-align: middle;
@@ -75,17 +98,26 @@ list-style-type: none;
   border-bottom: 1px solid #3b3748;
 }
 `
+const Header = styled.header`
+background: #0d012c;
+position: relative;
+top: 0;
+right: 0;
+left: 0;
+z-index: 1030;
+transition: top 0.3s;
+`
 
 
 
     return(
         <>
-            <header className={styles.main}>
+            <Header className={`App-nav ${isSticky ? `${styles.sticky}` : ''}`}>
                 <Container className={styles.navbur}>
                     <Row className={styles.navi}>
                         <div className='col-xl-12 d-flex align-items-center lefty'>
                         <h5 className={styles.devman}><LogoImage src={logo} alt="" />Cap.dev <span className={styles.blink}> _</span></h5>
-                        <PrimaryNav className="navigation">
+                        <PrimaryNav className='navigation'>
                         <Hambuger
                             className="hamburger"
                             onClick={() => {
@@ -101,11 +133,11 @@ list-style-type: none;
                         >
                         
                         <UlNav className={styles.navlist}>
-                        <NavList><Link className={styles.navlink} to={'/'}>Home</Link></NavList>
-                        <NavList><Link className={styles.navlink} to={'/about'}>About</Link></NavList>
-                        <NavList><Link className={styles.navlink} to={'/services'}>Services</Link></NavList>
-                        <NavList><Link className={styles.navlink} to={'/skills'}>Skills</Link></NavList>
-                        <NavList><Link className={styles.navlink} to={'/contact'}>Contact</Link></NavList>
+                        <NavList><Link className={styles.navlink} to={'/'}>Accueil</Link></NavList>
+                        <NavList onClick={() => handleScroll('aboutme')}><Link className={styles.navlink} to={'#'}>A Propos</Link></NavList>
+                        <NavList onClick={() => handleScroll('services')}><Link className={styles.navlink} to={'/#'}>Services</Link></NavList>
+                        <NavList onClick={() => handleScroll('skills')}><Link className={styles.navlink} to={'/#'}>Skills</Link></NavList>
+                        <NavList onClick={() => handleScroll('contactme')}><Link className={styles.navlink} to={'/#'}>Contact</Link></NavList>
                             </UlNav>
                             </Menu>
                             
@@ -114,7 +146,7 @@ list-style-type: none;
                         </div>
                     </Row>
                 </Container>
-            </header>
+            </Header>
         </>
     )
 }

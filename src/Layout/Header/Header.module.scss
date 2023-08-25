@@ -1,11 +1,11 @@
-.main{
-    background: #0d012c;
-    position: relative;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-}
+// .main{
+//     background: #0d012c;
+//     position: relative;
+//     top: 0;
+//     right: 0;
+//     left: 0;
+//     z-index: 1030;
+// }
 .navbur {
     background: #0d012c!important;
     border-bottom: 0.1px solid #0d012c;
@@ -61,4 +61,11 @@
     .navigationmenu{
         display: none;
     }
+  }
+  .sticky {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
   }
