@@ -1,2 +1,4 @@
 # portfolio
-this is my personnal portfolio designey in React
+this is my personnal portfolio designed in React
+
+URL : https://cabrel-monkam-portfolio.vercel.app/
