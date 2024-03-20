@@ -1,0 +1,7 @@
+node_modules/*
+ecosytem.config.js
+.env
+.history/*
+local-storage/*
+package-lock.json
+.env
